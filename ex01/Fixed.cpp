@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:17:27 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/07/26 15:40:43 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/07/31 17:02:43 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ Fixed::Fixed(const Fixed & src)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
+}
+
+Fixed::Fixed(const int value)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->value = value << fractionalBits;
+}
+
+Fixed::Fixed(const float value)
+{
+	std::cout << "Float constructor called" << std::endl;
+	this->value = roundf(value * (1 << fractionalBits));
 }
 
 Fixed::~Fixed()
@@ -44,18 +56,6 @@ void Fixed::setRawBits(int const raw)
 {
 	std::cout << "setRawBits member function called" << std::endl;
 	value = raw;
-}
-
-Fixed::Fixed(const int value)
-{
-	std::cout << "Int constructor called" << std::endl;
-	this->value = value << fractionalBits;
-}
-
-Fixed::Fixed(const float value)
-{
-	std::cout << "Float constructor called" << std::endl;
-	this->value = roundf(value * (1 << fractionalBits));
 }
 
 float Fixed::toFloat(void) const
