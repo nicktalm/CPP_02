@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:17:27 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/07/31 17:02:43 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/05 12:29:27 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,25 @@ Fixed::Fixed(const Fixed & src)
 Fixed::Fixed(const int value)
 {
 	std::cout << "Int constructor called" << std::endl;
-	this->value = value << fractionalBits;
+	if (value <= (1 << 23) && value >= -(1 << 23))
+		this->value = (value * int(1 << fractionalBits));
+	else
+	{
+		std::cerr << "Value is too big" << std::endl;
+		std::exit(1);
+	}
 }
 
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->value = roundf(value * (1 << fractionalBits));
+	if (value <= (3.402823466e+38F / float(1 << fractionalBits)) && value >= (-3.402823466e+38F / float(1 << fractionalBits)))
+		this->value = roundf(value * (1 << fractionalBits));
+	else
+	{
+		std::cerr << "Value is too big" << std::endl;
+		std::exit(1);
+	}
 }
 
 Fixed::~Fixed()
