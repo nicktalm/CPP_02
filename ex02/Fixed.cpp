@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:17:27 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/08/05 15:44:11 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/05 16:48:03 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ std::ostream & operator<<(std::ostream & a, Fixed const & src)
 	return (a);
 }
 
+//comparison operators
+
 Fixed & Fixed::operator=(const Fixed & src)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
@@ -71,7 +73,94 @@ Fixed & Fixed::operator=(const Fixed & src)
 	return (*this);
 }
 
-//Member functions
+bool Fixed::operator>(const Fixed & src)
+{
+	return (value > src.getRawBits());
+}
+
+bool Fixed::operator<(const Fixed & src)
+{
+	return (value < src.getRawBits());
+}
+
+bool Fixed::operator>=(const Fixed & src)
+{
+	return (value >= src.getRawBits());
+}
+
+bool Fixed::operator<=(const Fixed & src)
+{
+	return (value <= src.getRawBits());
+}
+
+bool Fixed::operator==(const Fixed & src)
+{
+	return (value == src.getRawBits());
+}
+
+bool Fixed::operator!=(const Fixed & src)
+{
+	return (value != src.getRawBits());
+}
+
+//arithmetic operators
+
+Fixed Fixed::operator+(const Fixed & src)
+{
+	return (Fixed(toFloat() + src.toFloat()));
+}
+
+Fixed Fixed::operator-(const Fixed & src)
+{
+	return (Fixed(toFloat() - src.toFloat()));
+}
+
+Fixed Fixed::operator*(const Fixed & src)
+{
+	return (Fixed(toFloat() * src.toFloat()));
+}
+
+Fixed Fixed::operator/(const Fixed & src)
+{
+	if (this->toFloat() != 0 && src.toFloat() != 0)
+	{
+		Fixed tmp(this->toFloat() / src.toFloat());
+		return (tmp);
+	}
+	else
+		std::cerr << "Division by zero" << std::endl;
+	return (src);
+}
+
+//increment and decrement operators
+
+Fixed & Fixed::operator++(void)
+{
+	value++;
+	return (*this);
+}
+
+Fixed Fixed::operator++(int)
+{
+	Fixed tmp(*this);
+	operator++();
+	return (tmp);
+}
+
+Fixed & Fixed::operator--(void)
+{
+	value--;
+	return (*this);
+}
+
+Fixed Fixed::operator--(int)
+{
+	Fixed tmp(*this);
+	operator--();
+	return (tmp);
+}
+
+//member functions
 
 int Fixed::getRawBits(void) const
 {
@@ -92,4 +181,24 @@ float Fixed::toFloat(void) const
 int Fixed::toInt(void) const
 {
 	return (value >> fractionalBits);
+}
+
+Fixed & Fixed::min(Fixed & a, Fixed & b)
+{
+	return (a < b ? a : b);
+}
+
+Fixed & Fixed::max(Fixed & a, Fixed & b)
+{
+	return (a > b ? a : b);
+}
+
+const Fixed	&Fixed::min(const Fixed &s1, const Fixed &s2)
+{
+	return (s1.toFloat() < s2.toFloat() ? s1 : s2);
+}
+
+const Fixed	&Fixed::max(const Fixed &s1, const Fixed &s2)
+{
+	return (s1.toFloat() > s2.toFloat() ? s1 : s2);
 }

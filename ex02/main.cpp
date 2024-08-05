@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 12:40:06 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/08/05 12:42:56 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/05 16:47:19 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ int	main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max(a, b) << std::endl;
+	// std::cout << a / 0 << std::endl;
 }

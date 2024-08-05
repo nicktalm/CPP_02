@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:17:16 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/08/05 15:51:31 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/05 16:23:59 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ class Fixed
 		~Fixed();
 		
 		Fixed & operator=(const Fixed & src);
+		
+		//comparison operators
+		
 		bool operator>(const Fixed & src);
 		bool operator<(const Fixed & src);
 		bool operator>=(const Fixed & src);
@@ -36,15 +39,21 @@ class Fixed
 		bool operator==(const Fixed & src);
 		bool operator!=(const Fixed & src);
 
+		//arithmetic operators
+
 		Fixed operator+(const Fixed & src);
 		Fixed operator-(const Fixed & src);
 		Fixed operator*(const Fixed & src);
 		Fixed operator/(const Fixed & src);
 		
+		//increment and decrement operators
+		
 		Fixed & operator++(void);
 		Fixed operator++(int);
 		Fixed & operator--(void);
 		Fixed operator--(int);
+
+		//member functions
 		
 		float toFloat(void) const;
 		int toInt(void) const;
