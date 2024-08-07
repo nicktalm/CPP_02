@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/05 12:40:06 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/08/07 12:58:12 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/07 14:46:45 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,16 @@ int	main( void )
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
 	std::cout << Fixed::max(a, b) << std::endl;
-	// std::cout << a / 0 << std::endl;
+
+	// std::cout << a << std::endl;
+	// std::cout << --a << std::endl;
+	// std::cout << a << std::endl;
+	// std::cout << a-- << std::endl;
+	// std::cout << a << std::endl;
+
+	// std::cout << Fixed::min(a, b) << std::endl;
+	// std::cout << Fixed(10) + Fixed(5) << std::endl;
+	// std::cout << Fixed(10.5f) - Fixed(5) << std::endl;
+	// std::cout << Fixed(10.25f) / Fixed(2) << std::endl;
+	return 0;
 }
