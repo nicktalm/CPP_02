@@ -6,7 +6,7 @@
 /*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:17:27 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/08/05 16:48:03 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/07 12:10:21 by ntalmon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 
 Fixed::Fixed() : value(0)
 {
-	std::cout << "Default constructor called" << std::endl;
+	// std::cout << "Default constructor called" << std::endl;
 }
 
 Fixed::Fixed(const Fixed & src)
 {
-	std::cout << "Copy constructor called" << std::endl;
+	// std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
 Fixed::Fixed(const int value)
 {
-	std::cout << "Int constructor called" << std::endl;
+	// std::cout << "Int constructor called" << std::endl;
 	if (value <= (1 << 23) && value >= -(1 << 23))
 		this->value = (value * int(1 << fractionalBits));
 	else
@@ -39,7 +39,7 @@ Fixed::Fixed(const int value)
 
 Fixed::Fixed(const float value)
 {
-	std::cout << "Float constructor called" << std::endl;
+	// std::cout << "Float constructor called" << std::endl;
 	if (value <= (3.402823466e+38F / float(1 << fractionalBits)) && value >= (-3.402823466e+38F / float(1 << fractionalBits)))
 		this->value = roundf(value * (1 << fractionalBits));
 	else
@@ -53,7 +53,7 @@ Fixed::Fixed(const float value)
 
 Fixed::~Fixed()
 {
-	std::cout << "Destructor called" << std::endl;
+	// std::cout << "Destructor called" << std::endl;
 }
 
 //Operator overloads
@@ -68,7 +68,7 @@ std::ostream & operator<<(std::ostream & a, Fixed const & src)
 
 Fixed & Fixed::operator=(const Fixed & src)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	// std::cout << "Copy assignment operator called" << std::endl;
 	value = src.getRawBits();
 	return (*this);
 }

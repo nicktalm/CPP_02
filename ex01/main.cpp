@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ntalmon <ntalmon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jkauker <jkauker@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 13:17:03 by ntalmon           #+#    #+#             */
-/*   Updated: 2024/08/05 12:31:36 by ntalmon          ###   ########.fr       */
+/*   Updated: 2024/08/07 10:06:59 by jkauker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(void)
 {
 	Fixed a;
-	Fixed const b(1);
+	Fixed const b(10);
 	Fixed const c(42.42f);
 	Fixed const d(b);
 
